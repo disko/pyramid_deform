@@ -66,6 +66,8 @@ setup(name='pyramid_deform',
           'testing':tests_require,
           'docs':docs_extras,
           },
-      entry_points = """\
+      entry_points="""\
+      [paste.app_factory]
+      demo = pyramid_deform.demo:main
       """,
       )
