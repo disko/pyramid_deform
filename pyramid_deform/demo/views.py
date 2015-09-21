@@ -5,9 +5,7 @@ from colander import Schema
 from colander import SchemaNode
 from colander import String
 from deform.widget import TextAreaWidget
-from pyramid.httpexceptions import HTTPFound
 from pyramid.view import view_config
-from pyramid_deform import FormView
 from pyramid_deform import FormWizard
 from pyramid_deform import FormWizardView
 from pyramid_deform import WizardState
@@ -49,6 +47,7 @@ class Wizard(FormWizard):
             })
         return result
 
+
 @view_config(route_name='wizard', renderer='templates/form.pt')
 class WizardView(FormWizardView):
 
@@ -62,7 +61,7 @@ class WizardView(FormWizardView):
         self.wizard = Wizard(self.name, self.done, *self.schemas)
 
     def __call__(self):
-        result = super(DemoFormWizardView, self).__call__(self.request)
+        result = super(WizardView, self).__call__(self.request)
         # result can either be:
         #   - a dictionary passed to the renderer or
         #   - a HTTPFound redirect
